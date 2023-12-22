@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Riverwood</title>
+
+
+	<link href="/src/styles/fonts.css" rel="stylesheet" type="text/css"/>
+	<link href="/src/styles/layout.css" rel="stylesheet" type="text/css">
+	<link href="/authorize/styles/style.css?v=22" rel="stylesheet" type="text/css">
+	<link href="/authorize/styles/beauty_input.css?v=22" rel="stylesheet" type="text/css">
+
+	<script src="/src/JSF.js?v=22" type="text/javascript" defer></script>
+	<script src="/authorize/scripts/DB.js?v=22" type="text/javascript" defer></script>
+	<script src="/authorize/scripts/LocalDB.js?v=22" type="text/javascript" defer></script>
+	<script src="/authorize/scripts/config.js?v=22" type="text/javascript" defer></script>
+
+</head>
+
+<body>
+    <main>
+		<article class="authorization-card">
+			<section class="authorization-type">
+				<div class="active non-select login" data-text="CONTINUE">Login</div>
+				<div class="non-select signup" data-text="CREATE ACCOUNT">Sign up</div>
+			</section>
+			<section class="authorization-info sign-in">
+				<div>
+					<input id="username" type="text" placeholder="username" required>
+					<span>username</span>
+				</div>
+				<div class="signup-fields" style="display: none; opacity: 0;">
+					<input id="email" placeholder="email" required>
+					<span>email</span>
+				</div>
+				<div class="signup-fields" style="display: none; opacity: 0;">
+					<input id="phone" placeholder="phone" required>
+					<span>phone</span>
+				</div>
+				<div>
+					<input id="password" type="password" placeholder="password" required>
+					<span>password</span>
+				</div>
+			</section>
+			<section class="authorization-confirm">
+				<button>CONTINUE</button>
+			</section>
+		</article>
+    </main>
+</body>
+
+</html>

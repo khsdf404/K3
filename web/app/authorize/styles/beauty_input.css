@@ -1,0 +1,34 @@
+section.authorization-info input {
+    margin: 25px 0;
+    padding: 6px 0 6px 2px;
+
+    background: #fff0;
+    border-bottom: 4px solid var(--based-color);
+}
+.signup section.authorization-info input {
+    margin: 15px 0;
+    border-bottom: 2px solid var(--based-color);
+}
+section.authorization-info input::placeholder {
+    color: var(--based-color);
+    opacity: 0.4;
+
+    transition: .2s all;
+}
+section.authorization-info span {
+    position: absolute;
+    opacity: 0;
+    top: 24px;
+    left: 2px;
+    z-index: -1;
+    
+    transition: .3s all;
+}
+section.authorization-info input:placeholder-shown:focus + span {
+    top: 0;
+    left: -20px;
+    opacity: 0.4;
+}
+section.authorization-info input:focus::placeholder {
+    opacity: 0;
+}

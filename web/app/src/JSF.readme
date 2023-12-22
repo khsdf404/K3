@@ -1,0 +1,170 @@
+* JO = JSF object;
+* .list = JO.list which is an array of HTML nodes;
+* $el = first element in .list;
+* $elems = all elements in .list;
+
+
+
+
+Usage:
+> $jsf(elements) : JO
+	* elements : string						# '.class', '#id', 'span a'
+	? Returns JO with matched HTML-elements in document placed in .list.
+	Example: 
+		1. $jsf('#myDiv a, .test-span')		# JSFeatures { list: [a, span] }
+
+
+
+
+
+
+
+
+>>>>  LIST-based GETTERS  <<<<
+
+> .size() : int
+	? Returns length of the .list.
+
+> .not(elements) : JO
+	* elements : string						# '.someclass', 'div a', '#id'	
+	? Returns new JO without matched elements in .list.
+
+
+> .get(arg = 0) : int/array of nodes
+	* arg : int
+		? Returns an element from .list by index.
+	* arg: array of interers
+		? Returns an array of elements from .list by indexes.
+
+> getAll() : array
+	? Returns $elems.
+
+> .getJSF(arg = 0) : JO/array
+	? The same as .get(), but instead of just element from .list 
+	? it returns new JO object with element from .list.
+
+
+> .index(collection = null) : int
+	* collection : JO
+		? Returns index of $el in passed JO's  .list.
+	* collection : string						# '.someclass', 'div a', '#id'	
+		? Returns index of $el in JO created with passed string.
+	* collection : array of html nodes
+		? Returns index of $el in array.
+	* colelction : null
+		? Returns index of $el in its closest parent.
+
+> .rect() : object
+	? Returns BoundingClientRects of $el.
+
+> .parent(parent = null) : JO
+	* parent : string						# '.someclass', 'div a', '#id'	
+		? Returns closest matched parent
+		? By default matched parent is the closest one.
+
+> .children(elements) : JO
+	* elements : string						# '.class', '#id', 'span a'
+	? Returns new JO with all matched childs of $el.
+
+> .childrenOf(elements, index = 0) : JO
+	* elements : string						# '.class', '#id', 'span a'
+	? Returns new JO with all matched childs of $elems[index].
+
+
+
+
+
+
+>>>>  STYLES CHANGING & ANIMATIONS  <<<<
+
+> .css(params) : this
+	* params : object						# {'opacity': '1', 'left': '150px'}
+	
+	? Chagnes styles of $elems (doesnt erase previous changes).
+
+> .animate(params, transition, callback) : this
+	* params : object						# {'opacity': '1', 'left': '150px'}
+	* transition : int/sting				# ms or 'ease', 'ease-in' etc
+			
+
+> .fadeIn(duration, display, callback) : this
+> .fadeOut(duration, callback) : this
+	* duration : int (ms)
+	* display : string (default 'initial')
+		? Which display'll setted
+	? Both are a special cases of .animate(), 
+	? hiding and showing elements with duration.
+
+> .scroll(y, duration) : this
+	* y : int
+		? y-coordinate to which the element will be scrolled.
+	* duration : int						# ms
+
+
+
+
+
+
+
+>>>>  ATTRIBUTES GETTERS & SETTERS  <<<<
+
+> .text(value = null) : this/string
+> .value(value = null) : this/sting
+> .ihtml(value = null) : this/string		# innerHTML
+> .ohtml(value = null) : this/string		# outerHTML
+> .attr(attr, value = null) : this/string
+> .id(value = null) : this/string
+> .classList(value = null) : this/string
+	? Each method get values from $el, sets values on $elems.
+> .empty() : this
+	? Removes all child nodes from $elems.
+
+
+
+
+>>>>  EVENTS & TRIGGERS  <<<<
+
+> .onEvent(event, f) : this
+	* event : string						# 'mousedown', 'keypress', etc
+	* f : function
+	? Set event-handler on $elems.
+
+> .onClick(f) : this
+	? Same as .onEvent('click', f)
+
+> .trigger(event) : this
+	* event : string
+	? Triggers an event on $elems.
+
+
+
+
+
+
+>>>>  OPERATIONS WITH .list  <<<<
+
+> .each(f) : this
+	? Run a passed function with (el, index) params for $elems.
+
+> eachJSF(f) : this
+	? Run a passed function with ($el, index) params for $elems.
+
+> .extend(arg, removeDuplicates = true) : this
+	* arg : string							# '.class', '#id', 'span a'
+	* arg : html-element
+	* arg : JSF-element
+	* arg : array of html-elements
+	? Pushes elements in .list.
+
+> .exclude(arg) : this
+	* arg : string							# '.class', '#id', 'span a'
+	* arg : html-element
+	* arg : JSF-element						# removes from .list $elems from arg 
+	* arg : int							# index
+	* arg : array of int						# indexes
+	
+	
+	
+	* arg : array of html-elements
+	? Removes elements from .list.
+
