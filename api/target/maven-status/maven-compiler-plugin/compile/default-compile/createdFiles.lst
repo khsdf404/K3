@@ -1,0 +1,12 @@
+appjava/repository/PollRepository.class
+appjava/exceptions/FakeTokenException.class
+appjava/service/JwtService$1.class
+appjava/entity/Poll.class
+appjava/controller/PollController.class
+appjava/App.class
+appjava/entity/Answer.class
+appjava/service/JwtService.class
+appjava/exceptions/NoRightsException.class
+appjava/exceptions/TokenExpiredException.class
+appjava/controller/AnswerController.class
+appjava/repository/AnswerRepository.class

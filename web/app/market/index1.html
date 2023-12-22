@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>ФРИКОЗОН.com</title>
+
+
+	<link href="/src/styles/fonts.css?v=27" rel="stylesheet" type="text/css"/>
+	<link href="/src/styles/layout.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/src/styles/header.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/src/styles/sidebar.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/src/styles/table.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/market/styles/views.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/market/styles/cart.css?v=27" rel="stylesheet" type="text/css">
+	<link href="/src/styles/profile.css?v=27" rel="stylesheet" type="text/css">
+
+
+	<script src="/src/JSF.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/LocalDB.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/DB.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/config.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/ProductAmount.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/CartAmount.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/ProductCard.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/CartView.js?v=27" type="text/javascript" defer></script>
+	<script src="/market/scripts/Views.js?v=27" type="text/javascript" defer></script>
+	<script src="/src/Profile.js?v=27" type="text/javascript" defer></script>
+	
+</head>
+
+<body>
+	<header>
+		<h1 class="header-logo non-select" data-name="start">
+			<a href="/market/">ФРИКОЗОН</a>
+			<span style="letter-spacing: 2px; margin-left: -4px;">.com</span>
+		</h1>
+		<section>
+			<button id="cartBtn" class="cart-btn" data-name="cart"></button>
+			<button id="profileBtn" class="profile-btn" data-name="profile"></button>
+		</section>
+	</header>
+	<aside></aside>
+    <main>
+		<article id="views">
+			<section id="startView" class="active">
+				<h2>Welcome to</h2>
+				<h1>ФРИКОЗОН</h1>
+				<h3>Здесь можно буль-буль, не буль-буль и ещё много всего</h3>
+			</section>
+
+			<section id="cartView">
+				<div class="header">
+					<span class="header-text">Your cart:</span>
+					<div class="cart-buttons">
+						<button id="placeOrder">Order</button>
+						<button id="clearCart">Clear</button>
+					</div>
+				</div>
+				<article class="table"></article>
+				<div class="total-price"><span ></span></div>
+			</section>
+			
+			<section id="profileView" class="">
+				<article class="profile-card">
+					<section class="profile-type">
+						<div class="non-select login active">User</div>
+					</section>
+					<section class="profile-info">
+						<div>
+							<input id="login" autocomplete="off" type="text" placeholder="login">
+							<span>login</span>
+						</div>
+						<div>
+							<input id="email" autocomplete="off" type="text" placeholder="email@test.ru">
+							<span>email@test.ru</span>
+						</div>
+						<div>
+							<input id="phone" autocomplete="off" type="text" placeholder="phone">
+							<span>phone</span>
+						</div>
+						<div>
+							<input id="password" autocomplete="off" type="password" placeholder="password">
+							<span>password</span>
+						</div>
+					</section>
+					<section class="profile-confirm">
+						<button id="profileConfirm">Confirm</button>
+						<button id="profileLogout">Log out</button>
+					</section>
+				</article>
+			</section>
+		</article>
+	</main>
+</body>
+
+</html>

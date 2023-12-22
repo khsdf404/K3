@@ -1,0 +1,114 @@
+:root {
+    --main-bg: linear-gradient(160deg, #f7f7f7 30%, #bdd8ff)
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    width: 100%;
+    min-height: 100%;
+    height: 100%;
+
+    border-radius: 0;
+
+    overflow: hidden;
+}
+
+
+
+
+input, button, span {
+    font-size: var(--medium-fontsize);
+}
+
+
+article.authorization-card {
+    display: flex;
+    flex-direction: column;
+
+    width: 360px;
+    height: 500px;
+
+    border: 1px solid #0008;
+    border-radius: 6px;
+    box-shadow: 5px 20px 50px #0004;
+    backdrop-filter: blur(10px);
+
+    font-family: var(--font);
+    color: var(--based-color);
+}
+
+
+section.authorization-type {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-top: 30px;
+}
+section.authorization-type > div {
+    border-bottom: 2px solid #fff0;
+
+    text-transform: uppercase;
+    font-size: var(--medium-fontsize);
+
+    opacity: 0.6;
+    cursor: pointer;
+
+    transition: .3s all;
+}
+section.authorization-type > div.active {
+    border-bottom: 2px solid var(--based-color);
+
+    opacity: 1;
+    cursor: auto;
+}
+
+
+
+section.authorization-info {
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    flex: 1;
+}
+section.authorization-info div {
+    position: relative;
+    display: flex;
+    flex-direction: column-reverse;
+
+    width: 70%;
+}
+
+
+section.authorization-confirm {
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 30px;
+}
+section.authorization-confirm > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 70%;
+    height: 48px;
+
+    border: 1px solid var(--based-color);
+    border-radius: 3px;
+    text-shadow: 0px 1px 5px #ffffff82;
+ }
+
+

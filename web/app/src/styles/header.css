@@ -1,0 +1,74 @@
+header {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-between;
+
+    height: var(--header-height);
+}
+
+
+header .header-logo {
+    margin: 0 0 0 var(--sidebar-width);
+    cursor: pointer;
+}
+header a {
+    letter-spacing: 4px;
+    font-size: var(--large-fontsize);
+}
+
+
+header section {
+    display: flex;
+    flex-direction: row;
+
+    margin: 0 40px;
+}
+
+
+header button {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    width: var(--header-btnsize);
+    height: var(--header-btnsize);
+
+    margin: 0 8px;
+
+    background-image: url('/src/icons/cart.png');
+    background-size: calc(var(--header-btnsize) * 0.5);
+    background-color: var(--accent-color);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border-radius: 50%;
+}
+header button.profile-btn {
+    background-image: url('/src/icons/user.png');
+}
+
+
+header button#cartBtn::after {
+    position: absolute;
+    content: '';
+
+    top: -1px;
+    right: 2px;
+    
+    width: 12px;
+    height: 12px;
+
+    background: #fb5959;
+    border-radius: 50%;
+
+    opacity: 0;
+    transition: .2s all;
+}
+header button#cartBtn.new-in-cart::after {
+   opacity: 1;
+}
