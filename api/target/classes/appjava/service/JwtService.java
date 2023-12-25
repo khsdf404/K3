@@ -92,6 +92,19 @@ public class JwtService {
     public String getSubject(String bearer) {
         return this.getClaim(bearer.substring(7), "subject");
     }
+    private Map<String, String> getPayload(String encodedPayload) {
+
+        byte[] decodedBytes = Base64.getDecoder().decode(encodedPayload);
+        String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
+
+        Type type = new TypeToken<Map<String, String>>(){}.getType();
+        Gson gson = new Gson();
+
+        return gson.fromJson(decoded, type);
+    }
+    public String getRole(String bearer) {
+        return this.getClaim(bearer.substring(7), "role");
+    }
 
 
     private String getEncodedSign(String header, String payload) {
@@ -114,17 +127,6 @@ public class JwtService {
 
 
 
-    private Map<String, String> getPayload(String encodedPayload) {
-
-        byte[] decodedBytes = Base64.getDecoder().decode(encodedPayload);
-        String decoded = new String(decodedBytes, StandardCharsets.UTF_8);
-
-
-        Type type = new TypeToken<Map<String, String>>(){}.getType();
-        Gson gson = new Gson();
-
-        return gson.fromJson(decoded, type);
-
-    }
+    
 
 }

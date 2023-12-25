@@ -31,8 +31,8 @@ public class Poll {
   public void setId(Long id) { this.id = id; }
   public Long getId() { return this.id; }
 
-  public void setAnswersAmount(Long answersAmount) { this.answersAmount = answersAmount; }
-  public Long getAnswersAmount() { return this.answersAmount; }
+  public void setReplyAmount(Long replyAmount) { this.replyAmount = replyAmount; }
+  public Long getReplyAmount() { return this.replyAmount; }
 
   public String getOwnerLogin() { return this.ownerLogin; }
   public void setOwnerLogin(String login) { this.ownerLogin = login; }

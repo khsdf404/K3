@@ -50,11 +50,7 @@ DB.Redirect().then(() => {
             LocalDB.SetToken(responseData['token']);
             
             if (responseData['role'] == 'ROLE_USER')
-                window.location.replace('/market/')
-            if (responseData['role'] == 'ROLE_SELLER')
-                window.location.replace('/seller/')
-            if (responseData['role'] == 'ROLE_ADMIN')
-                window.location.replace('/admin/');
+                window.location.replace('/mypolls/')
         }
 
 

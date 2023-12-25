@@ -26,11 +26,7 @@ class DB {
             LocalDB.SetToken(responseData['token']);
     
             if (responseData['role'] == 'ROLE_USER')
-                changeWindowLocation('/market/')
-            if (responseData['role'] == 'ROLE_SELLER')
-                changeWindowLocation('/seller/')
-            if (responseData['role'] == 'ROLE_ADMIN')
-                changeWindowLocation('/admin/');
+                changeWindowLocation('/mypolls/')
         });
         
     }

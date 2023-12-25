@@ -1,0 +1,9 @@
+#views a {
+    align-self: flex-start;
+    color: #0000ff;
+
+    font-size: var(--large-fontsize);
+
+    text-decoration: underline;
+    cursor: pointer;
+}

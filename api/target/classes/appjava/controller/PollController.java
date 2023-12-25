@@ -34,21 +34,39 @@ public class PollController {
     private String role = "ROLE_USER, ROLE_ADMIN";
 
 
+    @GetMapping("/public/{link}/")
+    public ResponseEntity getPublic(@PathVariable String link) {
 
-    @GetMapping("{link}/")
-    public ResponseEntity getByLink(@RequestHeader("Authorization") String bearer, @PathVariable String link) {
+        if ( repository.findByLink(link) == null )
+            return ResponseEntity.badRequest().body("Not found");
+
+        Poll pollByLink = repository.findByLink(link);
+        Poll publicPoll = new Poll();
+        
+        publicPoll.setQuestions(pollByLink.getQuestions());
+        publicPoll.setName(pollByLink.getName());
+        publicPoll.setExpirationTime(pollByLink.getExpirationTime());
+
+
+        return ResponseEntity.ok(publicPoll);
+    }
+    @GetMapping("/private/{link}/")
+    public ResponseEntity getPrivate(@RequestHeader("Authorization") String bearer, @PathVariable String link) {
 
         try { jwtService.TokenVerified(bearer, this.role); }
         catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
 
-        try { repository.findByLink(link); } 
-        catch (Exception e) { return ResponseEntity.badRequest().body("Not found"); }
+        if ( repository.findByLink(link) == null )
+            return ResponseEntity.badRequest().body("Not found");
+
+        if ( !repository.findByLink(link).getOwnerLogin().equals(jwtService.getSubject(bearer)) )
+            return ResponseEntity.badRequest().body("You have no right for this.");
 
         return ResponseEntity.ok(repository.findByLink(link));
     }
 
 
-    @GetMapping("bytoken/")
+    @GetMapping("/all/")
     public ResponseEntity getByToken(@RequestHeader("Authorization") String bearer) {
 
         try { jwtService.TokenVerified(bearer, this.role); }
@@ -60,17 +78,6 @@ public class PollController {
         return ResponseEntity.ok(polls);
     }
 
-
-
-    @GetMapping
-    public ResponseEntity getAll(@RequestHeader("Authorization") String bearer) {
-
-        try { jwtService.TokenVerified(bearer, "ROLE_ADMIN"); }
-        catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
-
-        return ResponseEntity.ok(repository.findAll());
-    }
-
    
 
 
@@ -80,94 +87,34 @@ public class PollController {
         try { jwtService.TokenVerified(bearer, this.role); }
         catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
 
+        System.out.println(obj);
+
         obj.setOwnerLogin(jwtService.getSubject(bearer));
         obj.setLink(obj.generateLink());
+        obj.setStatus(true);
+        obj.setReplyAmount(0L);
         obj.setCreationTime(obj.generateCreationTime());
 
         return ResponseEntity.ok(repository.save(obj));
     }
 
 
-    
-    @PutMapping("/{id}/")
-    public ResponseEntity update(@RequestHeader("Authorization") String bearer, 
-    @PathVariable Long id, @RequestBody Poll obj) {
+    @DeleteMapping("/{link}/")
+    public ResponseEntity delete(@RequestHeader("Authorization") String bearer, @PathVariable String link) {
 
-        try { jwtService.TokenVerified(bearer, this.role); }
-        catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
-        
-
-        Poll existingObj = repository.findById(id).get(); 
-
-        if (obj.getName() != null)
-            existingObj.setName(obj.getName());
-        if (obj.getBody() != null)
-            existingObj.setBody(obj.getBody());
-        if (obj.getStatus() != null)
-            existingObj.setStatus(obj.getStatus());
-        if (obj.getExpirationTime() != null)
-            existingObj.setExpirationTime(obj.getExpirationTime());
-
-        existingObj.setLink(existingObj.generateLink());
-        existingObj.setCreationTime(existingObj.generateCreationTime());
-        
-        return ResponseEntity.ok(repository.save(existingObj));
-    }
-
-    @PutMapping("/admin/{id}/")
-    public ResponseEntity updateAdmin(@RequestHeader("Authorization") String bearer, 
-    @PathVariable Long id, @RequestBody Poll obj) {
-
-        try { jwtService.TokenVerified(bearer, this.role); }
+        try { jwtService.TokenVerified(bearer, "ROLE_USER"); }
         catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
 
-        Poll existingObj = repository.findById(id).get(); 
+        if ( repository.findByLink(link) == null )
+            return ResponseEntity.badRequest().body("Not found");
 
-        if (obj.getName() != null)
-            existingObj.setName(obj.getName());
-        if (obj.getBody() != null)
-            existingObj.setBody(obj.getBody());
-        if (obj.getStatus() != null)
-            existingObj.setStatus(obj.getStatus());
-        if (obj.getExpirationTime() != null)
-            existingObj.setExpirationTime(obj.getExpirationTime());
+        Poll poll = repository.findByLink(link);
 
-        existingObj.setLink(existingObj.generateLink());
-        existingObj.setCreationTime(existingObj.generateCreationTime());
-        
-        return ResponseEntity.ok(repository.save(existingObj));
-    }
-
-
-    @DeleteMapping("/{id}/")
-    public ResponseEntity delete(@RequestHeader("Authorization") String bearer, @PathVariable Long id) {
-
-        try { jwtService.TokenVerified(bearer, "ROLE_USER, ROLE_ADMIN"); }
-        catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
-
-        try { repository.findById(id).get(); } 
-        catch (Exception e) { return ResponseEntity.badRequest().body("Not found"); }
-
-        Poll poll = repository.findById(id).get();
-
-        if (poll.getOwnerLogin() != jwtService.getSubject(bearer))
+        if ( !poll.getOwnerLogin().equals(jwtService.getSubject(bearer)) )
             return ResponseEntity.badRequest().body("You don't have permission for that");
 
 
-        repository.deleteById(id);
-        return ResponseEntity.ok("Deleted successfully");
-    }
-
-    @DeleteMapping("/admin/{id}/")
-    public ResponseEntity deleteAdmin(@RequestHeader("Authorization") String bearer, @PathVariable Long id) {
-
-        try { jwtService.TokenVerified(bearer, "ROLE_ADMIN"); }
-        catch (Exception e) { return ResponseEntity.badRequest().body(e.getMessage()); }
-
-        try { repository.findById(id).get(); } 
-        catch (Exception e) { return ResponseEntity.badRequest().body("Not found"); }
-
-        repository.deleteById(id);
+        repository.deleteById(poll.getId());
         return ResponseEntity.ok("Deleted successfully");
     }
     

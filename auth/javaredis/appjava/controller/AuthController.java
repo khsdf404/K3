@@ -74,7 +74,7 @@ public class AuthController {
 
         Jwt jwt = jwtService.findByAccessToken(tokenHeader.substring(7));
 
-        if (jwt == null) {
+        if (jwt == null) {  
             // token not found exception
             return new Response(null, null);
         }

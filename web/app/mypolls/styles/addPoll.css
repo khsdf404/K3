@@ -1,0 +1,67 @@
+#addPollView > input {
+    font-size: var(--medium-fontsize);
+    align-self: flex-start;
+    border-bottom: 3px solid #444;
+
+    margin: 10px 10px;
+}
+
+.addPoll-buttons {
+    display: flex;   
+
+    width: 100%;
+}
+
+.addPoll-buttons > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+
+    background-color: var(--accent-color);
+    border-radius: 3px;
+    border: 1px solid #75757587;
+
+    font-weight: 900;
+}
+
+
+
+
+.question-form {
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+
+    margin: 10px;
+
+    border: 1px solid #555;
+    border-radius: 3px;
+
+}
+
+.question-form section {
+    display: flex;
+    flex-direction: row;
+    margin: 5px 15px;
+}
+
+.question-form div {
+    font-size: var(--medium-fontsize);
+    display: flex;
+align-items: center;
+}
+
+.question-form > section > *:first-child {
+    width: 100%;
+}
+.question-form input {
+    margin-left: 15px;
+    
+    border-bottom: 3px solid #222;
+
+    font-size: var(--medium-fontsize);
+}

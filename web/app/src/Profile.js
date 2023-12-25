@@ -29,10 +29,7 @@ class Profile {
         })
 
         $jsf(`#profileLogout`).onClick(async () => {
-            await DB.PostCart();
-
             delete localStorage['token'];
-            delete localStorage['cart'];
             
 
             window.location.replace('/');

@@ -17,17 +17,22 @@ public class Poll {
   private String ownerLogin;
 
   private String name;
-  private String body;
+  private String questions;
+  private String answers;
   private Boolean status;
   private Date creationTime;
   private Date expirationTime;
 
   @Column(unique=true)
   private String link;
+  private Long replyAmount;
 
 
   public void setId(Long id) { this.id = id; }
   public Long getId() { return this.id; }
+
+  public void setReplyAmount(Long replyAmount) { this.replyAmount = replyAmount; }
+  public Long getReplyAmount() { return this.replyAmount; }
 
   public String getOwnerLogin() { return this.ownerLogin; }
   public void setOwnerLogin(String login) { this.ownerLogin = login; }
@@ -36,8 +41,11 @@ public class Poll {
   public void setName(String name) { this.name = name; }
   public String getName() { return this.name; }
 
-  public void setBody(String body) { this.body = body; }
-  public String getBody() { return this.body; }
+  public void setQuestions(String questions) { this.questions = questions; }
+  public String getQuestions() { return this.questions; }
+
+  public void setAnswers(String answers) { this.answers = answers; }
+  public String getAnswers() { return this.answers; }
 
   public void setLink(String link) { this.link = link; }
   public String getLink() { return this.link; }

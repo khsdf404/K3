@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	
+	<link rel="icon" type="image/x-icon" href="/src/favicon.ico">
+    <title>Mirea polls</title>
+
+
+	<link href="/src/styles/fonts.css?v=36" rel="stylesheet" type="text/css"/>
+	<link href="/src/styles/layout.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/src/styles/header.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/src/styles/sidebar.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/mypolls/styles/views.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/src/styles/profile.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/mypolls/styles/addPoll.css?v=36" rel="stylesheet" type="text/css">
+	<link href="/mypolls/styles/listPoll.css?v=36" rel="stylesheet" type="text/css">
+
+
+	<script src="/src/JSF.js?v=36" type="text/javascript" defer></script>
+	<script src="/mypolls/scripts/LocalDB.js?v=36" type="text/javascript" defer></script>
+	<script src="/mypolls/scripts/DB.js?v=36" type="text/javascript" defer></script>
+	<script src="/mypolls/scripts/list.js?v=36" type="text/javascript" defer></script>
+	<script src="/mypolls/scripts/add.js?v=36" type="text/javascript" defer></script>
+	<script src="/mypolls/scripts/startup.js?v=36" type="text/javascript" defer></script>
+	<script src="/src/Profile.js?v=36" type="text/javascript" defer></script>
+
+</html>
+
+<body>
+   <body>
+	<header>
+		<h1 class="header-logo non-select" data-name="start">
+			<a href="/mypolls/">MIREA</a>
+			<span style="letter-spacing: 2px; margin-left: -4px;">.polls</span>
+		</h1>
+		<section>
+			<button id="profileBtn" class="profile-btn" data-name="profile"></button>
+		</section>
+	</header>
+	<aside></aside>
+    <main>
+		<article id="views">
+			<section id="startView" class="active">
+				<h2>Welcome to</h2>
+				<h1>Mirea Polls</h1>
+			</section>
+
+			<section id="profileView" class="">
+				<article class="profile-card">
+					<section class="profile-type">
+						<div class="non-select login active">USER</div>
+					</section>
+					<section class="profile-info">
+						<div>
+							<input id="login" autocomplete="off" type="text" placeholder="login">
+							<span>login</span>
+						</div>
+						<div>
+							<input id="email" autocomplete="off" type="text" placeholder="email@test.ru">
+							<span>email@test.ru</span>
+						</div>
+						<div>
+							<input id="phone" autocomplete="off" type="text" placeholder="phone">
+							<span>phone</span>
+						</div>
+						<div>
+							<input id="password" autocomplete="off" type="password" placeholder="password">
+							<span>password</span>
+						</div>
+					</section>
+					<section class="profile-confirm">
+						<button id="profileConfirm">Confirm</button>
+						<button id="profileLogout">Log out</button>
+					</section>
+				</article>
+			</section>
+
+			<section id="addPollView"></section>
+			<section id="listPollView"></section>
+		</article>
+	</main>
+</body>
+
+</html>
